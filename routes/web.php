@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Cv\Create;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware('auth')->group(function (){
+
+    Route::get('/cv/make', Create::class)->name('cv.create');
+
+});;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
